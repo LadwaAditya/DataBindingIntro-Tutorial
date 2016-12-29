@@ -1,21 +1,19 @@
 package com.ladwa.aditya.databindingintrotutorial;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.ladwa.aditya.databindingintrotutorial.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.text_hello) TextView textHello;
-    @BindView(R.id.text_name) TextView textName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        binding.textHello.setText("This is welcome text");
+        binding.textName.setText("My name is Aditya");
     }
 }
